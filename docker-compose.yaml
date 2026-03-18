@@ -1,0 +1,34 @@
+services:
+  kobodevcontainer:
+    build:
+      context: .
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    container_name: KoboToolchain
+    user: "${UID}:${GID}"
+    #user: "kobodev"
+    ports:
+      - "2222:2345" # Host port 2222 -> container port 2345
+    #volumes:
+      #- ./KoboDevHomeWorkspace:/home/kobodev/Workspace
+    command: >
+      sh -c "
+        echo [LOG][kobodevcontainer] Start command, stats, sshd
+        whoami
+        id
+        /usr/sbin/sshd -f /home/kobodev/sshd_config
+        echo [LOG][kobodevcontainer] bash
+        exec bash
+      "
+    working_dir: /home/kobodev/
+    tty: true
+
+# MUST CREATE KoboDevHome beforehand otherwise docker deamon will create it before running the command and it can only create files as root 
+# build it      : docker-compose build
+# REbuild it    : docker-compose build --no-cache
+# run it        : docker-compose up
+# bash into it  : docker-compose exec kobodevcontainer bash
+# Dockerfile is used to BUILD the docker, docker-comose.yaml then run it, volumes are NOT mounted at build time
+# command is run at runtime, whenever you start/restart the docker
+# WORKING_DIR is set before running COMMAND instruction

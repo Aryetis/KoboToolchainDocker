@@ -1,8 +1,5 @@
 # Dockerfile
-#bookworm <=> (gcc-12, koxtoolchain now seems to require gcc-14)
 FROM debian:bookworm
-#FROM debian:trixie
-#FROM ubuntu:20.04
 
 # Prevent interactive prompts during apt installs
 ENV DEBIAN_FRONTEND=noninteractive

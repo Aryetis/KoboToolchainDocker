@@ -52,9 +52,7 @@ WORKDIR /home/kobodev/Workspace/kobo-qt-setup-scripts
 RUN ./install_toolchain.sh > install_toolchain.log 2>&1
 RUN ./get_qt.sh
 RUN ./install_libs.sh
-RUN echo $'\n########################################' >> ~/.bashrc
-RUN echo 'export PATH="$HOME/x-tools/arm-kobo-linux-gnueabihf/bin:$PATH"' >> ~/.bashrc
-RUN source ~/.bashrc
+ENV PATH="$PATH:/home/kobodev/x-tools/arm-kobo-linux-gnueabihf/bin"
 RUN ./build_qt.sh kobo config
 RUN ./build_qt.sh kobo make
 RUN ./build_qt.sh kobo install

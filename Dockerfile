@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
             gawk libtool libtool-bin libncurses-dev curl file git \
             gperf help2man texinfo unzip wget cmake pkg-config python3 \
             mmv lftp clang libclang-dev llvm-dev rsync zip \
-            openssh-server nano ragel \
+            openssh-server nano ragel libgmp3-dev python3-dev \
             && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Setting passwordless user (using .env variables, mapped through docker-compose.yaml)
@@ -57,3 +57,4 @@ RUN ./build_qt.sh kobo config
 RUN ./build_qt.sh kobo make
 RUN ./build_qt.sh kobo install
 RUN ./deploy_qt.sh
+RUN ./install_gdb.sh

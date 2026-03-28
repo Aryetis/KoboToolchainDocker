@@ -11,11 +11,14 @@ Some docker files to setup and run a debian bookworm docker with Qt 5.15 compile
 5. Start the docker image in the background `docker-compose up -d`
 6. Connect to your docker image `ssh kobodev@172.20.0.2 -p 2345` through ssh and compile your code using `arm-kobo-linux-gnueabihf-g++`
 7. But you'll probably want to configure your IDE (I'm using QtCreator for that) to connect to your docker image through ssh instead.
-8. Stop that container when you're done with it `docker compose down`
+8. You probably gonna need to get the qt-bin files from the docker, to do so run `docker cp <containerID>:/home/kobodev/qt-bin /home/hostname/qt-bin/` (check container ID with `docker ps`)
+9. Stop that container when you're done with it `docker compose down`
 
 ## Wait but I know nothing about docker !
 
-Me neither ! RTFM for stuff such as lazydocker, ask google or your prefered local AI, etc...
+Me neither ! RTFM for stuff such as lazydocker, ask google or your prefered local AI, etc... 
+
+Keep in mind that your IDE (eg : Qtcreator) is likely gonna run its own instance of your docker image. So the instance you'll up manually won't be the same as your IDE's.
 
 In the meantime and for future me. Here's a bunch of useful commands for it in rapid fire.
 

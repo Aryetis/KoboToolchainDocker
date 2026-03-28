@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
             gawk libtool libtool-bin libncurses-dev curl file git \
             gperf help2man texinfo unzip wget cmake pkg-config python3 \
             mmv lftp clang libclang-dev llvm-dev rsync zip \
-            openssh-server nano ragel libgmp3-dev python3-dev \
+            openssh-server nano ragel libgmp3-dev python3-dev libexpat1-dev libgmp-dev \
             && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Setting passwordless user (using .env variables, mapped through docker-compose.yaml)

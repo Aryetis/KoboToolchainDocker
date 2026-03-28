@@ -22,7 +22,10 @@ RUN groupadd -g ${GID} kobodev \
     && mkdir -p /home/kobodev/.ssh/ssh_host_keys \
     && chown -R kobodev:kobodev /home/kobodev
 
-### now let's do non root stuff
+# QtCreator is stupid and looks for make in sbin when using docker images. Didn't find how to change this. Therefore...
+RUN ln /usr/bin/make /usr/sbin/make
+
+# now let's do non root stuff
 ENV USER=kobodev
 USER kobodev
 

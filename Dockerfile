@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
             gawk libtool libtool-bin libncurses-dev curl file git \
             gperf help2man texinfo unzip wget cmake pkg-config python3 \
             mmv lftp clang libclang-dev llvm-dev rsync zip \
-            openssh-server nano ragel libgmp3-dev python3-dev libexpat1-dev libgmp-dev \
+            openssh-server nano ragel libgmp3-dev python3-dev libexpat1-dev libgmp-dev sshpass\
             && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Setting passwordless user (using .env variables, mapped through docker-compose.yaml)
@@ -34,6 +34,7 @@ USER kobodev
 #########################
 # generate keys
 RUN ssh-keygen -t ed25519 -f /home/kobodev/.ssh/ssh_host_keys/ssh_host_ed25519_key -N ''
+RUN echo StrictHostKeyChecking no >> /home/kobodev/.ssh/config
 
 # sshd_config file
 RUN cat > /home/kobodev/sshd_config << EOF

@@ -36,7 +36,7 @@ USER kobodev
 RUN ssh-keygen -t ed25519 -f /home/kobodev/.ssh/ssh_host_keys/ssh_host_ed25519_key -N ''
 RUN echo StrictHostKeyChecking no >> /home/kobodev/.ssh/config
 
-# sshd_config file
+# sshd_config file for potential ssh access to docker
 RUN cat > /home/kobodev/sshd_config << EOF
 Port 2345
 PasswordAuthentication yes
@@ -62,3 +62,4 @@ RUN ./build_qt.sh kobo make
 RUN ./build_qt.sh kobo install
 RUN ./deploy_qt.sh
 RUN ./install_gdb.sh
+

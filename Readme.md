@@ -17,6 +17,7 @@ From now on you have a functional docker image, containing the necessary toolcha
    To do that, first note your docker's instance id, it should be displayed when running `sudo docker ps`
    and then you can run `cp <containerId>:/home/kobodev/Workspace/kobo-qt-setup-scripts/deploy/ ./deploy/`
    Or in one line (assuming you didn't run any other docker instance in between those steps) `docker cp $(docker ps -alq):/home/kobodev/Workspace/kobo-qt-setup-scripts/deploy/ ./deploy/`
+   The `deploy/qt-linux-5.15-kde-kobo` folder you extracted should hold every dependencies required for running programs built using your qt-5.15 with its extra libraries.
 
 To tidy things up
 

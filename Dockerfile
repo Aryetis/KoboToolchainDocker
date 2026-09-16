@@ -61,9 +61,7 @@ RUN git config --global http.version HTTP/1.1
 RUN git clone --recurse-submodules https://github.com/Aryetis/kobo-qt-setup-scripts.git /home/kobodev/Workspace/kobo-qt-setup-scripts
 WORKDIR /home/kobodev/Workspace/kobo-qt-setup-scripts
 
-RUN ./install_toolchain.sh > install_toolchain.log 2>&1
-# experimentation, looking for a stable qt, bisecting looking for a not buggy one
-#RUN sed -i 's/^STABLE_COMMIT="[^"]*"/STABLE_COMMIT="eee7fde8a89acc1c63bd4b043ce86ecb38a75204"/' get_qt.sh
+RUN ./install_toolchain.sh 2>&1 install_toolchain.log 
 RUN ./get_qt.sh
 RUN ./install_libs.sh
 ENV PATH="$PATH:/home/kobodev/x-tools/arm-kobo-linux-gnueabihf/bin"

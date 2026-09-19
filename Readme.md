@@ -38,3 +38,4 @@ In the meantime and for future me. Here's a bunch of useful commands for it in r
 - `docker-compose build --no-cache`, rebuild docker's image from scratch
 - `docker-compose exec kobodevcontainer bash`, start and attach a bash to your docker's image
 - `docker-compose exec -u root kobodevcontainer bash`, same but start it as root
+- `docker builder prune` is a useful command to prune cached dangling stuff too

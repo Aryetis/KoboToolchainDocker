@@ -52,7 +52,7 @@ EOF
 #########################
 #         git          #
 ########################
-# for some reasons git started asking for credentials recently otherwise.... probably because git client is too old
+# for some reasons git started asking for credentials recently otherwise... probably because git client is too old
 RUN git config --global http.version HTTP/1.1
 
 #########################
@@ -60,14 +60,13 @@ RUN git config --global http.version HTTP/1.1
 #########################
 RUN git clone --recurse-submodules https://github.com/Aryetis/kobo-qt-setup-scripts.git /home/kobodev/Workspace/kobo-qt-setup-scripts
 WORKDIR /home/kobodev/Workspace/kobo-qt-setup-scripts
-
 RUN ./install_toolchain.sh 2>&1 install_toolchain.log 
 RUN ./get_qt.sh
-RUN ./install_libs.sh
+RUN  /home/kobodev/Workspace/kobo-qt-setup-scripts/install_libs.sh
 ENV PATH="$PATH:/home/kobodev/x-tools/arm-kobo-linux-gnueabihf/bin"
-RUN ./build_qt.sh kobo config
-RUN ./build_qt.sh kobo make
-RUN ./build_qt.sh kobo install
-RUN ./deploy_qt.sh
-RUN ./install_gdb.sh
+RUN /home/kobodev/Workspace/kobo-qt-setup-scripts/build_qt.sh kobo config
+RUN /home/kobodev/Workspace/kobo-qt-setup-scripts/build_qt.sh kobo make
+RUN /home/kobodev/Workspace/kobo-qt-setup-scripts/build_qt.sh kobo install
+RUN /home/kobodev/Workspace/kobo-qt-setup-scripts/deploy_qt.sh
+RUN /home/kobodev/Workspace/kobo-qt-setup-scripts/install_gdb.sh
 
